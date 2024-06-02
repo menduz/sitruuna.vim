@@ -135,7 +135,7 @@ call s:HL('NeoTreeTabActive',          'none',   'lighter_bg')
 call s:HL('NeoTreeTabSeparatorActive', 'none',   'lighter_bg', 'bold')
 
 " display a nice vertical line
-call s:HL('VertSplit',       'background',   'statusline')
+call s:HL('VertSplit',       'statusline',   'background')
 set fillchars+=vert:▏
 
 call s:HL('IncSearch',  'special', 'background', 'reverse,bold')
