@@ -70,13 +70,13 @@ endfunction
 " }}}
 " Highlights {{{
 call s:HL('Normal',          'foreground', 'background')
-call s:HL('NonText',         'comment',    'background')
+call s:HL('NonText',         'lighter_bg', 'background')
 call s:HL('EndOfBuffer',     'lighter_bg')
-call s:HL('LineNr',          'lighter_bg', 'darker')
-call s:HL('FoldColumn',      'lighter_bg', 'darker')
+call s:HL('LineNr',          'background', 'darker')
+call s:HL('FoldColumn',      'background', 'darker')
 call s:HL('Folded',          'fg_alt',     'statusline')
 call s:HL('MatchParen',      'special',    'none',       'bold')
-call s:HL('SignColumn',      'comment',    'darker')
+call s:HL('SignColumn',      'background', 'darker')
 call s:HL('Comment',         'comment',    'none')
 call s:HL('Conceal',         'error',      'none')
 call s:HL('Constant',        'constant',   'none')
@@ -129,12 +129,14 @@ call s:HL('htmlTagName',     'lemon',      'none',       'bold')
 call s:HL('htmlTag',         'foreground', 'none')
 call s:HL('htmlArg',         'function',   'none')
 
-
 call s:HL('NeoTreeNormal',             'none',   'lighter_bg') " Focused background
 call s:HL('NeoTreeNormalNC',           'none',   'lighter_bg') " Unfocused background
 call s:HL('NeoTreeTabActive',          'none',   'lighter_bg')
 call s:HL('NeoTreeTabSeparatorActive', 'none',   'lighter_bg', 'bold')
 
+" display a nice vertical line
+call s:HL('VertSplit',       'background',   'statusline')
+set fillchars+=vert:▏
 
 call s:HL('IncSearch',  'special', 'background', 'reverse,bold')
 call s:HL('Search',     'special', 'background', 'reverse,bold')
