@@ -2,7 +2,7 @@
 " A fresh lemon inspired colorscheme for vim
 
 " Setup {{{
-hi clear
+" hi clear
 if exists("syntax_on")
   syntax reset
 endif
@@ -22,12 +22,16 @@ let s:col.darker     = ['#131515', 232]
 let s:col.background = ['#181a1b', 233]
 let s:col.light_bg   = ['#1d2023', 236]
 let s:col.lighter_bg = ['#242629', 238]
-let s:col.comment    = ['#5c6366', 244]
+let s:col.comment    = ['#66606b', 244]
 let s:col.selection  = ['#2D3032', 238]
 let s:col.string     = ['#37ad82', 72]
 let s:col.type       = ['#7398dd', 104]
 let s:col.constant   = ['#ca70d6', 170]
 let s:col.error      = ['#c15959', 131]
+
+let s:col.ui         = ['#d1d1d1', 188]
+let s:col.ui_bg      = ['#242629', 233]
+
 let s:col.none       = ['NONE', 'NONE']
 " }}}
 " Highlighting Function from https://github.com/sjl/badwolf {{{
@@ -119,7 +123,6 @@ call s:HL('DiffAdd',         'string',     'none')
 call s:HL('DiffChange',      'lemon',      'none')
 call s:HL('DiffDelete',      'error',      'none')
 call s:HL('DiffText',        'function',   'none')
-call s:HL('Directory',       'lemon',      'none')
 call s:HL('debugPC',         'error',      'none')
 call s:HL('debugBreakpoint', 'error',      'none')
 call s:HL('ColorColumn',     'none',       'light_bg')
@@ -129,18 +132,26 @@ call s:HL('htmlTagName',     'lemon',      'none',       'bold')
 call s:HL('htmlTag',         'foreground', 'none')
 call s:HL('htmlArg',         'function',   'none')
 
-call s:HL('NeoTreeNormal',             'none',   'lighter_bg') " Focused background
-call s:HL('NeoTreeNormalNC',           'none',   'lighter_bg') " Unfocused background
-call s:HL('NeoTreeTabActive',          'none',   'lighter_bg')
-call s:HL('NeoTreeTabSeparatorActive', 'none',   'lighter_bg', 'bold')
+call s:HL('Directory',                   'ui',		'none')
+call s:HL('NeoTreeDirectoryIcon',        'lemon',	'none')
+call s:HL('NeoTreeFileIcon',             'ui',		'none')
+call s:HL('NeoTreeFileName',             'ui',		'none')
+
+call s:HL('NeoTreeNormal',               'none',	'ui_bg') " Focused background
+call s:HL('NeoTreeNormalNC',             'none',	'ui_bg') " Unfocused background
+
+call s:HL('NeoTreeTabActive',            'ui',		'ui_bg')
+call s:HL('NeoTreeTabInactive',          'comment',	'none')
+call s:HL('NeoTreeTabSeparatorActive',   'statusline',	'ui_bg')
+call s:HL('NeoTreeTabSeparatorInactive', 'statusline',	'none')
 
 " display a nice vertical line
 call s:HL('VertSplit',       'statusline',   'background')
 set fillchars+=vert:▏
 
-call s:HL('IncSearch',  'special', 'background', 'reverse,bold')
-call s:HL('Search',     'special', 'background', 'reverse,bold')
-call s:HL('Substitute', 'special', 'background', 'reverse,bold')
+call s:HL('IncSearch',  'function', 'background', 'reverse,bold')
+call s:HL('Search',     'function', 'background', 'reverse,bold')
+call s:HL('Substitute', 'function', 'background', 'reverse,bold')
 call s:HL('SpellBad',   'error',   'none',       'bold,underline')
 call s:HL('SpellCap',   'error',   'none',       'bold,underline')
 call s:HL('SpellLocal', 'special', 'none',       'bold,underline')
