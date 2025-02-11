@@ -95,7 +95,6 @@ call s:HL('Statement',       'lemon',      'none',       'bold')
 call s:HL('String',          'string',     'none')
 call s:HL('Todo',            'background', 'string')
 call s:HL('Type',            'type',       'none',       'none')
-call s:HL('Underlined',      'function',   'underline')
 call s:HL('Pmenu',           'foreground', 'light_bg')
 call s:HL('PmenuSbar',       'light_bg',   'light_bg')
 call s:HL('PmenuSel',        'background', 'lemon')
@@ -159,8 +158,9 @@ call s:HL('SpellCap',   'error',   'none',       'bold,underline')
 call s:HL('SpellLocal', 'special', 'none',       'bold,underline')
 call s:HL('SpellRare',  'special', 'none',       'bold,underline')
 
-hi default Bold gui=bold
-hi default Italic gui=italic
+hi Underlined term=underline gui=underline
+hi Bold term=bold gui=bold
+hi Italic term=italic gui=italic
 
 hi link Terminal                 Normal
 hi link Number                   Constant
