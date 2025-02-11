@@ -18,8 +18,8 @@ let s:col.function   = ['#a3db81', 117]
 let s:col.foreground = ['#d1d1d1', 188]
 let s:col.fg_alt     = ['#a1a1a1', 145]
 let s:col.statusline = ['#34373a', 137]
-let s:col.darker     = ['#131515', 232]
-let s:col.background = ['#181a1b', 233]
+let s:col.darker     = ['#181a1b', 232]
+let s:col.background = ['#0e1419', 233]
 let s:col.light_bg   = ['#1d2023', 236]
 let s:col.lighter_bg = ['#242629', 238]
 let s:col.comment    = ['#66606b', 244]
@@ -30,7 +30,7 @@ let s:col.constant   = ['#ca70d6', 170]
 let s:col.error      = ['#c15959', 131]
 
 let s:col.ui         = ['#d1d1d1', 188]
-let s:col.ui_bg      = ['#242629', 233]
+let s:col.ui_bg      = ['#131515', 233]
 
 let s:col.none       = ['NONE', 'NONE']
 " }}}
@@ -71,9 +71,11 @@ function! s:HL(group, fg, ...)
 
     execute histring
 endfunction
+
 " }}}
 " Highlights {{{
-call s:HL('Normal',          'foreground')
+call s:HL('Normal',          'foreground', 'background')
+call s:HL('Foreground',      'foreground')
 call s:HL('NonText',         'lighter_bg', 'background')
 call s:HL('EndOfBuffer',     'lighter_bg')
 call s:HL('Folded',          'fg_alt',     'statusline')
@@ -93,7 +95,7 @@ call s:HL('Statement',       'lemon',      'none',       'bold')
 call s:HL('String',          'string',     'none')
 call s:HL('Todo',            'background', 'string')
 call s:HL('Type',            'type',       'none',       'none')
-call s:HL('Underlined',      'function',   'none')
+call s:HL('Underlined',      'function',   'underline')
 call s:HL('Pmenu',           'foreground', 'light_bg')
 call s:HL('PmenuSbar',       'light_bg',   'light_bg')
 call s:HL('PmenuSel',        'background', 'lemon')
@@ -157,6 +159,9 @@ call s:HL('SpellCap',   'error',   'none',       'bold,underline')
 call s:HL('SpellLocal', 'special', 'none',       'bold,underline')
 call s:HL('SpellRare',  'special', 'none',       'bold,underline')
 
+hi default Bold gui=bold
+hi default Italic gui=italic
+
 hi link Terminal                 Normal
 hi link Number                   Constant
 hi link CursorIM                 Cursor
@@ -181,14 +186,13 @@ hi link SpecialComment           Special
 hi link StorageClass             Statement
 hi link Structure                Statement
 hi link Tag                      Special
-hi link Terminal                 Normal
 hi link Typedef                  Statement
 hi link htmlEndTag               htmlTagName
 hi link htmlLink                 Function
 hi link htmlSpecialTagName       htmlTagName
 hi link htmlTag                  htmlTagName
-hi link htmlBold                 Normal
-hi link htmlItalic               Normal
+hi link htmlBold                 Bold
+hi link htmlItalic               Bold
 hi link xmlTag                   Statement
 hi link xmlTagName               Statement
 hi link xmlEndTag                Statement
@@ -216,6 +220,24 @@ hi link markdownCodeBlock        String
 hi link markdownHeadingDelimiter Type
 hi link markdownLinkText         Special
 hi link markdownItalic           Preproc
+
+hi! link @markup.heading.1.markdown Title
+hi! link @markup.heading.2.markdown Title
+hi! link @markup.heading.3.markdown Title
+hi! link @markup.heading.4.markdown Title
+hi! link @markup.heading.5.markdown Title
+hi! link @markup.heading.6.markdown Title
+hi! link @markup.emphasis Italic
+hi! link @markup.emphasis Italic
+hi! link @markup.italic.markdown_inline Italic
+hi! link @markup.strong.markdown_inline Bold
+
+" vim-illuminate
+hi default Illuminated ctermbg=137 guibg=#34373a
+hi! link IlluminatedWord Illuminated
+hi! link IlluminatedWordText IlluminatedWord
+hi! link IlluminatedWordRead IlluminatedWord
+hi! link IlluminatedWordWrite IlluminatedWord
 
 " CSS
 hi link cssTagName    SpecialKey
@@ -245,8 +267,7 @@ hi link NeomakeVirtualtextMessage WarningMsg
 hi link NeomakeVirtualtextInfo Type
 
 " Fzf
-if get(g:, 'sitruuna_fzf', 1) == 1
-  let g:fzf_colors =
+let g:fzf_colors =
         \ { 'fg':    ['fg', 'NormalFloat'],
         \ 'bg':      ['bg', 'NormalFloat'],
         \ 'hl':      ['fg', 'Keyword', 'Keyword'],
@@ -260,7 +281,6 @@ if get(g:, 'sitruuna_fzf', 1) == 1
         \ 'marker':  ['fg', 'Keyword'],
         \ 'spinner': ['fg', 'Label'],
         \ 'header':  ['fg', 'Comment'] }
-endif
 
 if has('nvim')
   let g:terminal_color_0 = s:col.background[0]
