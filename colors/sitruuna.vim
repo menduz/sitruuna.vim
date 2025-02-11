@@ -30,7 +30,7 @@ let s:col.constant   = ['#ca70d6', 170]
 let s:col.error      = ['#c15959', 131]
 
 let s:col.ui         = ['#d1d1d1', 188]
-let s:col.ui_bg      = ['#131515', 233]
+let s:col.ui_bg      = ['#242629', 233]
 
 let s:col.none       = ['NONE', 'NONE']
 " }}}
